@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KritiAI — Autonomous AI Coding Studio & Desktop IDE</title>
+  <meta name="description" content="KritiAI is the next-generation autonomous AI coding environment. Download the native Windows desktop app or experience the web IDE.">
+  <link rel="icon" type="image/x-icon" href="/assets/icon.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand-logo">
+        <img src="/assets/512x512.png" alt="KritiAI Logo" class="brand-icon">
+        <span>KritiAI</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#web-ide">Web IDE</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#docs">Documentation</a></li>
+        <li><a href="#download">Download</a></li>
+      </ul>
+      <a href="#download" class="nav-cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M2 2H11.481V11.4769H2V2ZM12.519 2H22V11.4769H12.519V2ZM2 12.519H11.481V22H2V12.519ZM12.519 12.519H22V22H12.519"/>
+        </svg>
+        <span>Download for Windows</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="overview">
+    <div class="badge">
+      <span>✨ KritiAI v1.0.0 Now Available for Windows</span>
+    </div>
+    <h1>The Autonomous AI Coding Studio <br><span class="text-gradient">Engineered for Developers</span></h1>
+    <p>
+      Turn architectural ideas into verified production code. KritiAI unifies multi-agent autonomous problem solving, native language server intelligence, and complete local privacy into a blazing-fast desktop IDE and web portal.
+    </p>
+
+    <div class="hero-actions">
+      <a href="/download/windows" class="btn-primary" id="main-download-btn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M2 2H11.481V11.4769H2V2ZM12.519 2H22V11.4769H12.519V2ZM2 12.519H11.481V22H2V12.519ZM12.519 12.519H22V22H12.519"/>
+        </svg>
+        <span>Download for Windows (.exe)</span>
+      </a>
+      <a href="#web-ide" class="btn-secondary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <span>Explore Web IDE Demo</span>
+      </a>
+    </div>
+
+    <div class="hero-meta">
+      <span>✓ Windows 10/11 64-bit</span>
+      <span>✓ 183 MB Native Installer</span>
+      <span>✓ 100% Free & Open Ecosystem</span>
+    </div>
+  </section>
+
+  <!-- In-Browser Interactive Web IDE -->
+  <section class="section" id="web-ide">
+    <div class="section-header">
+      <h2 class="section-title">Completely Interactive <span class="text-gradient">Web Experience</span></h2>
+      <p class="section-desc">Experience KritiAI right inside your browser. Switch files, edit code, and chat with the AI assistant.</p>
+    </div>
+
+    <div class="ide-container">
+      <div class="ide-header">
+        <div class="window-dots">
+          <div class="window-dot dot-red"></div>
+          <div class="window-dot dot-yellow"></div>
+          <div class="window-dot dot-green"></div>
+        </div>
+        <div class="ide-title">KritiAI Studio — Workspace: my-project</div>
+        <div class="ide-status">
+          <div class="status-indicator"></div>
+          <span>Kriti-Core Ready</span>
+        </div>
+      </div>
+
+      <div class="ide-body">
+        <!-- Sidebar Explorer -->
+        <div class="ide-sidebar">
+          <div class="sidebar-heading">Project Explorer</div>
+          <div class="file-item active" data-file="agent.ts">
+            <span>📄</span> <span>src/agent.ts</span>
+          </div>
+          <div class="file-item" data-file="tools.ts">
+            <span>🔧</span> <span>src/tools.ts</span>
+          </div>
+          <div class="file-item" data-file="index.ts">
+            <span>⚡</span> <span>src/index.ts</span>
+          </div>
+          <div class="file-item" data-file="package.json">
+            <span>📦</span> <span>package.json</span>
+          </div>
+        </div>
+
+        <!-- Code Editor -->
+        <div class="ide-editor">
+          <div class="editor-tabs">
+            <div class="tab active">agent.ts</div>
+          </div>
+          <div class="editor-content" id="editor-content">
+            <!-- Dynamic Code Line injection -->
+          </div>
+        </div>
+
+        <!-- Chat Panel -->
+        <div class="ide-chat">
+          <div class="chat-header">
+            <span>💬</span> <span>KritiAI Assistant</span>
+          </div>
+          <div class="chat-messages" id="chat-messages">
+            <div class="chat-msg msg-ai">
+              <div class="msg-tag">KritiAI Agent</div>
+              <div>Hello! I'm your KritiAI coding agent. What would you like to build or refactor today?</div>
+            </div>
+          </div>
+          <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chat-input" placeholder="Ask KritiAI or request edits...">
+            <button class="chat-send-btn" id="chat-send">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section" id="features">
+    <div class="section-header">
+      <h2 class="section-title">Built for Real-World <span class="text-gradient">Engineering Workflows</span></h2>
+      <p class="section-desc">Everything you need to automate tedious development and focus on high-level architecture.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <h3>Autonomous Agent Loops</h3>
+        <p>KritiAI doesn't just suggest snippets. It autonomously investigates files, executes terminal tests, verifies output, and fixes runtime bugs until your goals are completed.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <h3>100% Local Privacy</h3>
+        <p>Keep your sensitive source code completely on your local machine. Connect to local models via Ollama or LM Studio, or bring your own direct API keys with encrypted memory.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <h3>Multi-Model Intelligence</h3>
+        <p>Seamlessly switch between Claude 3.7 Sonnet, GPT-4o, Gemini 2.5 Flash, DeepSeek R1, and local models. Choose reasoning models for design and high-speed models for edits.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+        </div>
+        <h3>Deep Code Intelligence</h3>
+        <p>Integrated Language Server Protocol (LSP) gives KritiAI instant access to type signatures, interface definitions, cross-file references, and linting feedback.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        </div>
+        <h3>Native Desktop Power</h3>
+        <p>GPU-accelerated desktop application with instant keyboard shortcuts, seamless multi-window management, and zero browser tab throttling.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+          </svg>
+        </div>
+        <h3>MCP Protocol & Custom Tools</h3>
+        <p>Equip your assistant with custom databases, API endpoints, web search capabilities, and local shell execution tools through Model Context Protocol (MCP).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section class="section" id="download">
+    <div class="download-box">
+      <h2>Get KritiAI for Windows</h2>
+      <p>Direct download for Windows 10 & 11 (64-bit). Complete with the updated KritiAI crystal interface.</p>
+
+      <div class="download-platforms">
+        <div class="platform-card highlight">
+          <div class="platform-name">Windows 64-bit Installer</div>
+          <div class="platform-specs">KritiAi-desktop-win-x64.exe • 183 MB</div>
+          <a href="/download/windows" class="platform-btn">
+            Download .exe Installer
+          </a>
+        </div>
+
+        <div class="platform-card">
+          <div class="platform-name">CLI & Terminal Suite</div>
+          <div class="platform-specs">Global npm / bun executable</div>
+          <a href="#cli" class="platform-btn" style="background: rgba(255,255,255,0.1);">
+            View Terminal Commands
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick CLI instructions -->
+      <div class="cli-box" id="cli">
+        <span class="cli-code">npm install -g @kritiai/cli</span>
+        <button class="copy-btn" data-code="npm install -g @kritiai/cli">Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Documentation & Quickstart -->
+  <section class="section" id="docs">
+    <div class="section-header">
+      <h2 class="section-title">Quickstart <span class="text-gradient">Guide</span></h2>
+      <p class="section-desc">Get up and running with KritiAI on Windows in less than two minutes.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>Step 1: Download & Run Installer</h3>
+        <p>Click the <strong>Download for Windows</strong> button to save <code>KritiAi-desktop-win-x64.exe</code>. Double click the installer to automatically set up the application, desktop shortcut, and Start menu launcher.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Step 2: Launch Workspace</h3>
+        <p>Open KritiAI from your Desktop shortcut or run <code>kritiai</code> in your terminal from inside any repository directory. KritiAI will automatically index your codebase.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Step 3: Pair Program with AI</h3>
+        <p>Give instructions in plain language. KritiAI will inspect files, propose diffs, run tests, and refine code alongside you with zero latency.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-copy">
+        © 2026 KritiAI. All rights reserved. Engineered for autonomous software development.
+      </div>
+      <ul class="footer-links">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#web-ide">Web IDE</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#docs">Documentation</a></li>
+        <li><a href="#download">Download</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
