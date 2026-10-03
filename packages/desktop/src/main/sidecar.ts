@@ -84,6 +84,7 @@ function prepareSidecarEnv(password: string, userDataPath: string) {
   Object.assign(process.env, {
     OPENCODE_SERVER_USERNAME: "opencode",
     OPENCODE_SERVER_PASSWORD: password,
+    OPENCODE_CLIENT: "desktop",
     OPENCODE_VERSION: "1.18.34",
     OPENCODE_CHANNEL: "latest",
     XDG_STATE_HOME: process.env.XDG_STATE_HOME ?? userDataPath,

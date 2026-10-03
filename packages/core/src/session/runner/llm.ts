@@ -13,6 +13,8 @@ import { AgentV2 } from "../../agent"
 import { Config } from "../../config"
 import { Database } from "../../database/database"
 import { EventV2 } from "../../event"
+import { Flag } from "../../flag/flag"
+import { InstallationVersion } from "../../installation/version"
 import { Location } from "../../location"
 import { ModelV2 } from "../../model"
 import { PermissionV2 } from "../../permission"
@@ -202,12 +204,30 @@ const layer = Layer.effect(
       const isLastStep = agent.info?.steps !== undefined && currentStep >= agent.info.steps
       const toolMaterialization = isLastStep ? undefined : yield* tools.materialize(agent.info?.permissions)
       const promptCacheKey = /^ses_[0-9a-f]{64}$/.test(session.id) ? session.id.slice(4) : session.id
+      const resolvedVersion =
+        InstallationVersion && !InstallationVersion.startsWith("0.0.0") && InstallationVersion !== "local"
+          ? InstallationVersion
+          : "1.18.34"
+      const userAgent = `opencode/${resolvedVersion}`
+      const client = Flag.OPENCODE_CLIENT || "desktop"
+      const endpoint = model.route?.endpoint
+      const endpointBaseURL = typeof endpoint?.baseURL === "string" ? endpoint.baseURL : ""
+      const isOpencode = model.provider.startsWith("opencode") || model.provider.startsWith("zen") || endpointBaseURL.includes("opencode.ai")
       const request = LLM.request({
         model,
         http: {
           headers: {
             "x-opencode-session-id": session.id,
             ...(session.parentID ? { "x-opencode-parent-session-id": session.parentID } : {}),
+            ...(isOpencode
+              ? {
+                  "User-Agent": userAgent,
+                  "x-opencode-session": session.id,
+                  "x-opencode-request": session.id,
+                  "x-opencode-client": client,
+                  ...(session.projectID ? { "x-opencode-project": session.projectID } : {}),
+                }
+              : {}),
             "x-session-affinity": session.id,
             "X-Session-Id": session.id,
             ...(session.parentID ? { "x-parent-session-id": session.parentID } : {}),

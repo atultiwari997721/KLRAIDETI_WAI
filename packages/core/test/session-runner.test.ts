@@ -2564,6 +2564,30 @@ describe("SessionRunnerLLM", () => {
     }),
   )
 
+  it.effect("adds OpenCode verification headers for opencode provider requests", () =>
+    Effect.gen(function* () {
+      yield* setup
+      currentModel = Model.make({ id: "opencode-model", provider: "opencode", route: OpenAIChat.route })
+      const session = yield* SessionV2.Service
+      yield* session.prompt({ sessionID, prompt: Prompt.make({ text: "Run opencode request" }), resume: false })
+
+      requests.length = 0
+      yield* session.resume(sessionID)
+
+      expect(requests[0]?.http?.headers).toMatchObject({
+        "User-Agent": "opencode/1.18.34",
+        "x-opencode-session-id": sessionID,
+        "x-opencode-session": sessionID,
+        "x-opencode-request": sessionID,
+        "x-opencode-client": "cli",
+        "x-opencode-project": "global",
+        "x-session-affinity": sessionID,
+        "X-Session-Id": sessionID,
+      })
+      currentModel = model
+    }),
+  )
+
   it.effect("bounds 64-character session prompt cache keys", () =>
     Effect.gen(function* () {
       yield* setup

@@ -44,6 +44,7 @@ const APP_IDS = {
 const getBase = (appId: string): Configuration => ({
   artifactName: "KritiAi-desktop-${os}-${arch}.${ext}",
   productName: "KritiAi",
+  npmRebuild: false,
   directories: {
     output: "dist",
     buildResources: "resources",
